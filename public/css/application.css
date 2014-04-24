@@ -1,10 +1,79 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+body {
+  counter-reset:section;
+  background-color: #F6F6EF;
+  font-family: Verdana;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-th {
-  text-align: left;
+header {
+  background-color: #F4712D;
+  padding: 3px 5px;
 }
+
+header h1 {
+  font-size: 11pt;
+  display: inline;
+}
+
+header p {
+  margin-left: 5px ;
+  font-size: 10pt;
+  display: inline;
+}
+
+article {
+  margin: 5px 5px;
+}
+
+article a.vote-button {
+  color: #8C8C8C;
+  text-decoration: none;
+  display: inline;
+  vertical-align: sub;
+}
+
+
+article h2 {
+  display: inline;
+  font-size: 10pt;
+}
+
+article:before {
+  counter-increment: section;
+  color: #8C8C8C;
+  font-size: 10pt;
+  content: counter(section) ". ";
+}
+
+article h2 a {
+  text-decoration: none;
+  color: black;
+}
+
+article p {
+  color: #8C8C8C;
+  font-size: 7pt;
+  margin: 3px 30px;
+}
+
+article p span.points:after {
+  content: " points";
+}
+
+article p span.username:before {
+  content: " by ";
+}
+
+article p span.timestamp:after {
+  content: ' hours ago';
+}
+
+article p span.comment-count:before {
+  content: ' | ';
+}
+
+article p span.comment-count:after {
+  content: ' comments';
+}
+
