@@ -87,7 +87,7 @@ article p span.comment-count:after {
 }
 
 form {
-  margin-top: 30px;
+  margin: 15px 30px;
 }
 
 form#posts input[type='text'] {
