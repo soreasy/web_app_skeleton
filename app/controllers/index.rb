@@ -7,7 +7,7 @@ get '/posts' do
   erb :index
 end
 
-get '/post/:id/vote' do
+get '/posts/:id/vote' do
   post = Post.find(params[:id])
   post.votes.create(value: 1)
   redirect "/posts"
