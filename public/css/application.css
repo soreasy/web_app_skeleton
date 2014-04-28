@@ -83,7 +83,18 @@ article p span.comment-count:before {
 }
 
 article p span.comment-count:after {
-  content: ' comments';
+  content: ' comments | ';
+}
+
+article p a.delete {
+  text-decoration: none;
+  color: #8C8C8C;
+  text-decoration: none;
+}
+
+article p a.delete:before {
+  content: ' delete this post';
+
 }
 
 form {

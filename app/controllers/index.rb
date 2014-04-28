@@ -13,7 +13,7 @@ get '/post/:id/vote' do
   redirect "/posts"
 end
 
-delete '/post/:id' do
+delete '/posts/:id' do
   post = Post.find(params[:id])
   post.destroy
   redirect "/posts"
