@@ -1,8 +1,8 @@
-# Orange Trees
+# AJAXifying Hacker News
 
 ## Learning Competencies
 
-  * making AJAX requests using $.ajax
+  * making AJAX requests using jQuery
   * having a server respond with different data-types (strings, JSON, partials)
   * writing AJAX requests in a modular, testable way.
 
@@ -11,23 +11,24 @@
 ## Releases
 
 ### Release 0 : voting
-<!-- string -->
+<!-- sending nothing back, change color on voting -->
 <!-- really deep dive into how AJAX works -->
 
 ### Release 1 : deleting
-<!-- json -->
-<!-- content type etc -->
+<!-- sendign string back, optional JSON -->
+<!-- setting method manually -->
 
 ### Release 2 : creating
-<!-- form data -->
-<!-- partial -->
+<!-- form data, serialization -->
+<!-- send partial back,  -->
 
 ### Release 3 : are you sure everything works?
 <!-- event delegation -->
 
 ### Release 4 : sorting
+<!-- sending json back, templating -->
 
-### Release 5 : user login
+### Release 5 : OOJS
 
 ## Resources
 
