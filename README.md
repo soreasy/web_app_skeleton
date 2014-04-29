@@ -99,6 +99,12 @@ Now that you've got your functionality working, you should attempt to organize y
 
 ### Release 6 : Testing
 
+Jasmine is a unit testing framework for JavaScript, meaning that it is meant to test your functions independent of the DOM, server, or any other part of your app. Unit testing DOM-interactive is consequently difficult. You will have to mock all elements on the DOM to
+
+What should you test? All the functions that interact with the server -- e.g. your AJAX calls -- should not be tested. Instead, you should test all your functions that do simple transforms in JavaScript or alter the DOM. If you haven't already, you should name and separate out your callbacks from your AJAX functions, so you can test your callbacks independently of AJAX.
+
+Refer to your Orange Trees challenge for an example of DOM testing in Jasmine.
+
 
 
 
