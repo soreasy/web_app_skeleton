@@ -31,7 +31,7 @@ You'll need to alter the get '/posts/:id/vote' route  and write some custom Java
 
 ```javascript
   // $.ajax takes a hashmap of options as an argument.
-  ajaxRequest = $.ajax({
+  var ajaxRequest = $.ajax({
     // these two attributes determine which route in your controller will be called.
     url: "/foo",
     type: 'GET'
