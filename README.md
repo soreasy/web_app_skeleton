@@ -34,7 +34,7 @@ You'll need to alter the get '/posts/:id/vote' route  and write some custom Java
   var ajaxRequest = $.ajax({
     // these two attributes determine which route in your controller will be called.
     url: "/foo",
-    type: 'GET'
+    type: 'GET',
     // the 'data' attribute determines what data is sent to the server.
     // The server will be able to access these values using the params hash.
     // If the server only needs to know information passed in the URL, this attribute is not necessary.
@@ -44,11 +44,11 @@ You'll need to alter the get '/posts/:id/vote' route  and write some custom Java
   // the .done function takes a callback, which will only be fired if the server responds
   // with a success status code. the callback will receive arguments corresponding to the
   // request object, status, and data sent from the server.
-  ajaxRequest.done(someCallback)
+  ajaxRequest.done(someCallbackFunction)
 
   // like the .done function, the .fail function will fire off a callback if the server responds
   // with an error status code.
-  ajaxRequest.fail(someOtherCallback)
+  ajaxRequest.fail(someOtherCallbackFunction)
 ```
 
 What does the server need to know to update a given vote total? What does the client need to know to update the DOM? How does the client get access to data sent from the server, and vice versa? You'll need to figure this all out to make this functional.
