@@ -8,7 +8,7 @@
 
 ## Summary
 
-In this challenge, you'll be taking a working AJAX-ifying a working Sinatra app. By the end of today, your Hacker News clone will allow users to vote on posts, delete posts, create new posts, and sort all posts without ever refreshing the page.
+In this challenge, you'll be AJAX-ifying a working Sinatra app. By the end of today, your Hacker News clone will allow users to vote on posts, delete posts, create new posts, and sort all posts without ever refreshing the page.
 
 To get started, download the skeleton, install your dependencies, and create and seed your database.
 
@@ -21,7 +21,7 @@ Press the vote button next to a post. You'll notice the page refreshes, and the 
 Here's the basic flow of this particular AJAX request:
 
 1. You should bind an event listener to any anchor tag of the vote-button class
-2. To stop a browser refresh from occuring, the provided callback function should prevent the default behavior of clicking a link.
+2. To stop a client refresh from occuring, the provided callback function should prevent the default behavior of clicking a link.
 3. It should then make an AJAX request to the server, hitting the get '/posts/:id/vote' route with the right id value.
 4. The server should update the vote total of the given post in the database.
 5. The server should respond to the client, passing along a string the corresponds to the id of the post that needs its vote total updated on the DOM.
@@ -35,14 +35,19 @@ You'll need to alter the get '/posts/:id/vote' route  and write some custom Java
     // these two attributes determine which route in your controller will be called.
     url: "/foo",
     type: 'GET'
-    // the 'data' attribute determines what data is sent to the server. The server will be able to access these values using the params hash. If the server only needs to know information passed in the URL, this attribute is not necessary.
+    // the 'data' attribute determines what data is sent to the server. 
+    // The server will be able to access these values using the params hash. 
+    // If the server only needs to know information passed in the URL, this attribute is not necessary.
     data: { bar: 'baz' }
   })
 
-  // the .done function takes a callback, which will only be fired if the server responds with a success status code. the callback will receive arguments corresponding to the the request object, status, and data sent from the server.
+  // the .done function takes a callback, which will only be fired if the server responds 
+  // with a success status code. the callback will receive arguments corresponding to the 
+  // request object, status, and data sent from the server.
   ajaxRequest.done(someCallback)
 
-  // like the .done function, the .fail function will fire off a callback if the server responds with an error status code.
+  // like the .done function, the .fail function will fire off a callback if the server responds 
+  // with an error status code.
   ajaxRequest.fail(someOtherCallback)
 ```
 
