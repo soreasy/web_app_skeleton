@@ -35,18 +35,18 @@ You'll need to alter the get '/posts/:id/vote' route  and write some custom Java
     // these two attributes determine which route in your controller will be called.
     url: "/foo",
     type: 'GET'
-    // the 'data' attribute determines what data is sent to the server. 
-    // The server will be able to access these values using the params hash. 
+    // the 'data' attribute determines what data is sent to the server.
+    // The server will be able to access these values using the params hash.
     // If the server only needs to know information passed in the URL, this attribute is not necessary.
     data: { bar: 'baz' }
   })
 
-  // the .done function takes a callback, which will only be fired if the server responds 
-  // with a success status code. the callback will receive arguments corresponding to the 
+  // the .done function takes a callback, which will only be fired if the server responds
+  // with a success status code. the callback will receive arguments corresponding to the
   // request object, status, and data sent from the server.
   ajaxRequest.done(someCallback)
 
-  // like the .done function, the .fail function will fire off a callback if the server responds 
+  // like the .done function, the .fail function will fire off a callback if the server responds
   // with an error status code.
   ajaxRequest.fail(someOtherCallback)
 ```
@@ -82,7 +82,25 @@ Great, you've created a new post! Does its vote button work? its delete link? Pr
 
 There are many ways to solve this problem. [jQuery's implementation of event delegation](https://learn.jquery.com/events/event-delegation/) may prove to be useful.
 
-### Release 4 : Sorting
+### Release 4 : Validations
+
+Users can currently create posts with blank titles. You should prevent that from happening using ActiveRecord validations. If a post fails to create, use the server must let the client know, and the client should let the user know by updating the DOM.
+
+Servers provide an easy way for surfacing errors -- HTTP status codes. Codes in the 200's correspond to successful requests, while  codes in the 400's and 500's correspond to errors. The $.ajax() function will decide which callback to fire based on the error code returned by the server. You can set error codes like this in Sinatra:
+
+```ruby
+  post '/posts' do
+    #logic for attempting to save a post.
+    if @post.save
+      status 200
+      erb :_post, :layout => false
+    else
+      status 422
+    end
+  end
+```
+
+### Release 5 : Sorting
 
 Now its time to make the links at the top of the page work.
 
@@ -92,9 +110,9 @@ Now its time to make the links at the top of the page work.
 
 All of this should be handled by AJAX requests. It's up to you how to architect this system -- should there be different routes in the controller for each sorting strategy? one route that responds to different parameters? What should the return value of the routes be?
 
-You can opt to use another partial to render the data, but you can also choose to do your rendering using JSON. What if the server responded with a nested JSON object, and the client then parsed that data out and appended the right HTML to the DOM? Templating can be done on server and client side.
+This data that needs to be sent back is likely too complex and large to be sent as HTML. Instead, the server should respond with a nested JSON object, and the client should parse that data out, turn it into HTML, and update the DOM.
 
-### Release 5 : OOJS
+### Release 6 : OOJS
 
 Now that you've got your functionality working, you should attempt to organize your code in a modular and extendable way. A series of 40-line functions won't work! Separate your code out into the MVC structure:
 
@@ -102,7 +120,7 @@ Now that you've got your functionality working, you should attempt to organize y
   * There should be a single object responsible for making AJAX requests (e.g. the Server)
   * There should be a controller object responsible for managing the Server and View objects, as well as binding event listeners.
 
-### Release 6 : Testing
+### Release 7 : Testing
 
 Jasmine is a unit testing framework for JavaScript, meaning that it is meant to test your functions independent of the DOM, server, or any other part of your app. Unit testing DOM-interactive is consequently difficult. You will have to mock all elements on the DOM to
 
