@@ -53,36 +53,43 @@ You'll need to alter the get '/posts/:id/vote' route  and write some custom Java
 
 What does the server need to know to update a given vote total? What does the client need to know to update the DOM? How does the client get access to data sent from the server, and vice versa? You'll need to figure this all out to make this functional.
 
-### Release 1 : Deleting
 
-Now that you've got voting up and running, you should make the "delete this post" link work. Clicking the link should delete the associated posts from the database and consequently remote the post from the DOM.
+### Release 1 : Points
 
-In release 0, you were asked to send data from the server to the client that identified which vote button to update. You sent this data as an unformatted string. For this release, you should send back a string formatted in JSON. your code will look something like this:
+Sure, a successful vote causes the upvote arrow to change color — but the point score of the post hasn't been updated! Your task in this release is to asynchronously update a post's points value on the page whenever someone clicks the vote button
+
+In release 0, you were asked to send data from the server to the client that identified which vote button to update. You sent this data as an unformatted string. That is a viable solution when you have a single piece of information to transmit, but becomes untenable when you need to send more than one piece of information -- like a post ID and a vote total. For this release, you should send back a string formatted in JSON. Your code will look something like this:
 
 ```ruby
-  delete '/posts/:id' do
-    ##logic for deleting a post
+  get '/posts/:id/vote' do
+    ##logic for adding a vote to a post.
 
     content_type :json
-    { foo: 'bar' }.to_json
+    { foo: 'bar', baz: 'qux' }.to_json
   end
 ```
 
-The .done() callback will now have access to the data passed from the server, which can be accessed like a JavaScript object.
+The .done() callback will now have access to the data passed from the server, which can be accessed as a JavaScript hashmap.
 
-### Release 2 : Creating
+### Release 2 : Deleting
+
+Now that you've got voting up and running, you should make the "delete this post" link functional. Clicking the link should delete the associated post from the database and consequently remote the post from the DOM.
+
+We've already created a skeleton route for you to use. You'll need to write the body of that route, an event listener, and callback functions to make this work.
+
+### Release 3 : Creating
 
 With deletion done, you're on to your hardest challenge yet — getting the creation form at the bottom of the page to work. Your first challenge will be to send the the right data to the server. Look into using jQuery's .serialize() function -- its a useful way to get data out of forms.
 
 You've already had routes respond with an unformatted string and with a string formatted as JSON. For this release, you should have your server return a string formmated in HTML, a.k.a. a partial. You can then append the partial directly to the page.
 
-### Release 3 : Are you sure everything works?
+### Release 4 : Are you sure everything works?
 
 Great, you've created a new post! Does its vote button work? its delete link? Probably not. Get them working.
 
 There are many ways to solve this problem. [jQuery's implementation of event delegation](https://learn.jquery.com/events/event-delegation/) may prove to be useful.
 
-### Release 4 : Validations
+### Release 5 : Validations
 
 Users can currently create posts with blank titles. You should prevent that from happening using ActiveRecord validations. If a post fails to create, use the server must let the client know, and the client should let the user know by updating the DOM.
 
@@ -100,7 +107,7 @@ Servers provide an easy way for surfacing errors -- HTTP status codes. Codes in 
   end
 ```
 
-### Release 5 : Sorting
+### Release 6 : Sorting
 
 Now its time to make the links at the top of the page work.
 
@@ -112,7 +119,7 @@ All of this should be handled by AJAX requests. It's up to you how to architect 
 
 This data that needs to be sent back is likely too complex and large to be sent as HTML. Instead, the server should respond with a nested JSON object, and the client should parse that data out, turn it into HTML, and update the DOM.
 
-### Release 6 : OOJS
+### Release 7 : OOJS
 
 Now that you've got your functionality working, you should attempt to organize your code in a modular and extendable way. A series of 40-line functions won't work! Separate your code out into the MVC structure:
 

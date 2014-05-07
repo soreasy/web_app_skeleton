@@ -14,9 +14,7 @@ get '/posts/:id/vote' do
 end
 
 delete '/posts/:id' do
-  post = Post.find(params[:id])
-  post.destroy
-  redirect "/posts"
+  # write logic for deleting posts here.
 end
 
 post '/posts' do
