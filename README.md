@@ -127,7 +127,31 @@ Now that you've got your functionality working, you should attempt to organize y
   * There should be a single object responsible for making AJAX requests (e.g. the Server)
   * There should be a controller object responsible for managing the Server and View objects, as well as binding event listeners.
 
-### Release 7 : Testing
+Handling $.ajax .done() and .fail() callbacks can be difficult in MVC, as they are tightly coupled to the request itself. To get around that, have your model return the request object to be modified in your controller. like this:
+
+```javascript
+  Server.prototype = {
+    makeDeleteRequest: function(opts) {
+      var requestObect = $.ajax({
+        //the details of the request go here.
+        })
+
+      return requestObject
+    }
+  }
+
+
+  Controller.prototype = {
+    deletePost: function() {
+     // the controller would be passed a server object on instantiation.
+     var request = this.server.makeDeleteRequest(options);
+     request.done( this.removePost() );
+     request.fail( this.displayError() );
+    }
+  }
+```
+
+### Release 8 : Testing
 
 Jasmine is a unit testing framework for JavaScript, meaning that it is meant to test your functions independent of the DOM, server, or any other part of your app. Unit testing DOM-interactive is consequently difficult. You will have to mock all elements on the DOM to
 
