@@ -144,9 +144,9 @@ Handling $.ajax .done() and .fail() callbacks can be difficult in MVC, as they a
   Controller.prototype = {
     deletePost: function() {
      // the controller would be passed a server object on instantiation.
-     var request = this.server.makeDeleteRequest(options);
-     request.done( this.removePost() );
-     request.fail( this.displayError() );
+     var request = this.server.makeDeleteRequest( options );
+     request.done( this.removePost );
+     request.fail( this.displayError );
     }
   }
 ```
