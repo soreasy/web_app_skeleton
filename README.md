@@ -24,8 +24,8 @@ Here's the basic flow of this particular AJAX request:
 2. To stop a client refresh from occuring, the provided callback function should prevent the default behavior of clicking a link.
 3. It should then make an AJAX request to the server, hitting the get '/posts/:id/vote' route with the right id value.
 4. The server should update the vote total of the given post in the database.
-5. The server should respond to the client, passing along a string the corresponds to the id of the post that needs its vote total updated on the DOM.
-6. The client, after being notified of a successful response by the server, should change the color of the given vote button to red.
+5. The server response should include everything the client (your JS callback function) needs to update the DOM..
+6. The client, after being notified of a successful response by the server, should update the vote count and change the color of the given vote button to red.
 
 You'll need to alter the get '/posts/:id/vote' route  and write some custom JavaScript and jQuery to get this working. Here's the basic syntax for an AJAX request using jQuery.
 
