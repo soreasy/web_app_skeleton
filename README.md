@@ -1,11 +1,5 @@
 # AJAXifying Hacker News
 
-## Learning Competencies
-
-  * making AJAX requests using jQuery
-  * having a server respond with different data-types (strings, JSON, partials)
-  * writing AJAX requests in a modular, testable way.
-
 ## Summary
 
 In this challenge, you'll be AJAX-ifying a working Sinatra app. By the end of today, your Hacker News clone will allow users to vote on posts, delete posts, create new posts, and sort all posts without ever refreshing the page.
