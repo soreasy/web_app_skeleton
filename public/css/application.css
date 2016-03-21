@@ -97,10 +97,6 @@ article p a.delete:before {
 
 }
 
-form {
-  margin: 15px 30px;
-}
-
 form#posts input[type='text'] {
   width: 200px;
   margin-left: 20px;
@@ -115,7 +111,17 @@ form#posts input[type='submit'] {
   border-width: 1px;
   font-weight: bold;
   background-color: #F4712D;
-
-
 }
 
+.inline {
+  display: inline;
+}
+
+.upvote-button {
+  background-color: transparent;
+  border: none;
+  padding-top: 5px;
+  color: #8C8C8C;
+  vertical-align: sub;
+  padding: 1px 0px 0px 0px;
+}
