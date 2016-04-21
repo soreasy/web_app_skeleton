@@ -25,19 +25,19 @@ Here's the basic flow of this particular AJAX request:
 
 1. You should bind an event listener to any anchor tag of the vote-button class
 2. To stop a client refresh from occuring, the provided callback function should prevent the default behavior of clicking a link.
-3. It should then make an AJAX request to the server, hitting the get '/posts/:id/vote' route with the right id value.
+3. It should then make an AJAX request to the server, hitting the post '/posts/:id/vote' route with the right id value.
 4. The server should update the vote total of the given post in the database.
 5. The server response should include everything the client (your JS callback function) needs to update the DOM..
 6. The client, after being notified of a successful response by the server, should update the vote count and change the color of the given vote button to red.
 
-You'll need to alter the get '/posts/:id/vote' route  and write some custom JavaScript and jQuery to get this working. Here's the basic syntax for an AJAX request using jQuery.
+You'll need to alter the post '/posts/:id/vote' route  and write some custom JavaScript and jQuery to get this working. Here's the basic syntax for an AJAX request using jQuery.
 
 ```javascript
   // $.ajax takes a hashmap of options as an argument.
   var ajaxRequest = $.ajax({
     // these two attributes determine which route in your controller will be called.
     url: "/foo",
-    type: 'GET',
+    type: 'POST',
     // the 'data' attribute determines what data is sent to the server.
     // The server will be able to access these values using the params hash.
     // If the server only needs to know information passed in the URL, this attribute is not necessary.
@@ -75,7 +75,7 @@ information -- like a post ID and a vote total. For this release, you should
 send back a string formatted in JSON. Your code will look something like this:
 
 ```ruby
-  get '/posts/:id/vote' do
+  post '/posts/:id/vote' do
     ##logic for adding a vote to a post.
 
     content_type :json
