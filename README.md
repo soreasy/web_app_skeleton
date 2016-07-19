@@ -23,7 +23,7 @@ database.
 
 Here's the basic flow of this particular AJAX request:
 
-1. You should bind an event listener to any anchor tag of the vote-button class
+1. You should bind an event listener to any button tag of the vote-button class
 2. To stop a client refresh from occuring, the provided callback function should prevent the default behavior of clicking a link.
 3. It should then make an AJAX request to the server, hitting the post '/posts/:id/vote' route with the right id value.
 4. The server should update the vote total of the given post in the database.
