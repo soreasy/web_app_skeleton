@@ -105,7 +105,7 @@ function -- its a useful way to get data out of forms.
 
 You've already had routes respond with an unformatted string and with a string
 formatted as JSON. For this release, you should have your server return a
-string formmated in HTML, a.k.a. a partial. You can then append the partial
+string formatted in HTML, a.k.a. a partial. You can then append the partial
 directly to the page.
 
 ### Release 4 : Are you sure everything works?
@@ -120,7 +120,7 @@ useful.
 ### Release 5 : Validations
 
 Users can currently create posts with blank titles. You should prevent that
-from happening using ActiveRecord validations. If a post fails to create, use
+from happening using ActiveRecord validations. If a post fails to create,
 the server must let the client know, and the client should let the user know by
 updating the DOM.
 
@@ -144,7 +144,7 @@ like this in Sinatra:
 
 ### Release 6 : Sorting
 
-Now its time to make the links at the top of the page work.
+Now it's time to make the links at the top of the page work.
 
   * When a user clicks 'new', the page should display a list of posts sorted by creation date.
   * When a user clicks 'comments', the page should display a list of posts sorted by comment count.
