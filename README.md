@@ -159,39 +159,4 @@ This data that needs to be sent back is likely too complex and large to be sent
 as HTML. Instead, the server should respond with a nested JSON object, and the
 client should parse that data out, turn it into HTML, and update the DOM.
 
-### Release 7 : OOJS
-
-Now that you've got your functionality working, you should attempt to organize
-your code in a modular and extendable way. A series of 40-line functions won't
-work! Separate your code out into the MVC structure:
-
-  * There should be a single object responsible for talking to your DOM (e.g. the View)
-  * There should be a single object responsible for making AJAX requests (e.g. the Server)
-  * There should be a controller object responsible for managing the Server and View objects, as well as binding event listeners.
-
-Handling `$.ajax` `.done()` and `.fail()` callbacks can be difficult in MVC, as they
-are tightly coupled to the request itself. To get around that, have your model
-return the request object to be modified in your controller. like this:
-
-```javascript
-  Server.prototype = {
-    makeDeleteRequest: function(opts) {
-      var requestObect = $.ajax({
-        //the details of the request go here.
-        })
-
-      return requestObject
-    }
-  }
-
-
-  Controller.prototype = {
-    deletePost: function() {
-     // the controller would be passed a server object on instantiation.
-     var request = this.server.makeDeleteRequest( options );
-     request.done( this.removePost );
-     request.fail( this.displayError );
-    }
-  }
-```
 
