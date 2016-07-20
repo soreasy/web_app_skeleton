@@ -142,21 +142,5 @@ like this in Sinatra:
   end
 ```
 
-### Release 6 : Sorting
-
-Now it's time to make the links at the top of the page work.
-
-  * When a user clicks 'new', the page should display a list of posts sorted by creation date.
-  * When a user clicks 'comments', the page should display a list of posts sorted by comment count.
-  * When a user clicks 'popular', the page should display a list of posts sorted by point count.
-
-All of this should be handled by AJAX requests. It's up to you how to architect
-this system -- should there be different routes in the controller for each
-sorting strategy? one route that responds to different parameters? What should
-the return value of the routes be?
-
-This data that needs to be sent back is likely too complex and large to be sent
-as HTML. Instead, the server should respond with a nested JSON object, and the
-client should parse that data out, turn it into HTML, and update the DOM.
 
 
